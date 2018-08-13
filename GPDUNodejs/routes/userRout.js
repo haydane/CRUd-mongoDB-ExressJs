@@ -45,29 +45,40 @@ rout.post('/update-user', (req, res) => {
                 message: 'No such user'
             });
 
-        }
+        } 
 
-        var username = user.username = req.body.username ? req.body.username : user.username;
-        var password = user.password = req.body.password ? req.body.password : user.password;
+        user.username = req.body.username ? req.body.username : user.username;
+        user.password = req.body.password ? req.body.password : user.password;
         
-        userModel.updateOne({ _id: objectId(id) }, { $set: {username,password}}, (err, result) => {
-            if (err) {
-                res.send(500).json({
-                    message: 'ERROR',
-                    error: err
-                });
+        
+        user.save((err,user) => {
+            if(err)
+            {
+                console.log(err);
             }
-            if (!result) {
-                res.send(404).json({
-                    message: 'not found',
-                })
+            else
+            {
+                console.log(user);
             }
-            else {
-                console.log(result);
-            }
-
-        });
+        })
         res.redirect('/');
+        // userModel.updateOne({ _id: objectId(id) }, { $set: {username,password}}, (err, result) => {
+        //     if (err) {
+        //         res.send(500).json({
+        //             message: 'ERROR',
+        //             error: err
+        //         });
+        //     }
+        //     if (!result) {
+        //         res.send(404).json({
+        //             message: 'not found',
+        //         })
+        //     }
+        //     else {
+        //         console.log(result);
+        //     }
+
+        // });
     });
 });
 
