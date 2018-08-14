@@ -27,7 +27,8 @@ rout.post('/new-user', (req, res) => {
     userController.save(newUser, (err, user) => {
         console.log(user);
     });
-    res.redirect('/')
+    req.flash('success_msg','saved');
+    res.redirect('/');
 });
 
 // update user
@@ -61,6 +62,7 @@ rout.post('/update-user', (req, res) => {
                 console.log(user);
             }
         })
+        req.flash('success_msg','updated');
         res.redirect('/');
         // userModel.updateOne({ _id: objectId(id) }, { $set: {username,password}}, (err, result) => {
         //     if (err) {
@@ -102,6 +104,7 @@ rout.post('/delete-user', (req, res) => {
         }
 
     });
+    req.flash('success_msg','deleted');
     res.redirect('/');
 });
 
