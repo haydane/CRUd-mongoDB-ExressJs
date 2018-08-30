@@ -1,61 +1,74 @@
-<h4 style="text-align: center">CRUD</h4>
+<h4 style="text-align: center;margin-top: 10px">CRUD</h4>
 <div class="row" style="padding:20px">
-     <div class="col s6">
+     <div class="col-md-6">
           <h5>Users</h5>
           {{#if users}}
-          <table>
-               <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-               </tr>
+          <table class="table">
+               <thead>
+                    <tr>
+                         <th>Username</th>
+                         <th>Password</th>
+                         <th>Link</th>
+                    </tr>
+               </thead>
                {{#each users}}
-               <tr>
-                    <td>{{_id}}</td>
-                    <td>{{username}}</td>
-                    <td>{{password}}</td>
-               </tr>
+               <tbody>
+                    <tr>
+                         <td>{{username}}</td>
+                         <td>{{password}}</td>
+                         <td><a href="/{{_id}}">link</a></td>
+                    </tr>
+               </tbody>
                {{/each}}
+
           </table>
           {{/if}}
      </div>
-     <div class="col s2">
+     <div class="col-md-2">
           <form action="/new-user" method="post">
                <div class="form-group">
                     <label for="">username</label>
-                    <input type="text" name="username" id="">
+                    <br>
+                    <input class="form-control" type="text" name="username" id="">
                </div>
                <div>
                     <label for="">password</label>
-                    <input type="text" name="password" id="">
+                    <br>
+                    <input class="form-control" type="text" name="password" id="">
                </div>
-               <button class="btn" type="submit">insert</button>
+               <br>
+               <button class="btn btn-success" type="submit">insert</button>
           </form>
      </div>
-     <div class="col s2">
+     <div class="col-md-2">
           <form action="/update-user" method="post">
                <div class="form-group">
-                    <label for="">ID</label>
-                    <input type="text" name="id" id="">
+                    <label for="">id</label>
+                    <br>
+                    <input class="form-control" type="text" name="id" id="">
                </div>
                <div class="form-group">
                     <label for="">username</label>
-                    <input type="text" name="username" id="">
+                    <br>
+                    <input class="form-control" type="text" name="username" id="">
                </div>
                <div>
                     <label for="">password</label>
-                    <input type="text" name="password" id="">
+                    <br>
+                    <input class="form-control" type="text" name="password" id="">
+                    <br>
                </div>
-               <button class="btn" type="submit">update</button>
+               <button class="btn btn-primary" type="submit">update</button>
           </form>
      </div>
-     <div class="col s2">
+     <div class="col-md-2">
           <form action="/delete-user" method="post">
                <div class="form-group">
-                    <label for="">ID</label>
-                    <input type="text" name="id" id="">
+                    <label for="">id</label>
+                    <br>
+                    <input class="form-control" type="text" name="id" id="">
                </div>
-               <button class="btn" type="submit">delete</button>
+               <button class="btn btn-danger" type="submit">delete</button>
           </form>
      </div>
 </div>
